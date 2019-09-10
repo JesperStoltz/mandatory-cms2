@@ -1,0 +1,51 @@
+.Home {
+    display: flex;
+    flex-direction: column;
+}
+
+.Home_products {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.productpost_container {
+    width: 400px;
+}
+
+.productpost_container_image {
+    height: 100px;
+}
+
+.productpost_container_name {
+    
+}
+
+.productpost_container_description {
+    
+}
+
+.productpost_container_pricetitle {
+    
+}
+
+.productpost_container_price {
+    
+}
+
+.productpost_container_stocktitle {
+    
+}
+
+.productpost_container_stock {
+    
+}
+
+.button_container {
+
+}
+
+button {
+
+}
+

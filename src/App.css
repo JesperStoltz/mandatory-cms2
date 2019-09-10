@@ -1,33 +1,119 @@
+body {
+  padding:0;
+  margin: 0;
+}
+
 .App {
-  text-align: center;
+width: 1200px;
+background-color: rgb(246, 250, 253);
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+header {
+width: 1200px;
+height: 100px;
+background-color: rgb(246, 250, 253);
+border-bottom: 1px solid black;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+margin-bottom: 5px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header_title {
+  font-size: 48px;
+  margin-top: 0px;
+}
+
+.header_p {
+  margin-top: -30px;
+}
+
+aside {
+width: 300px;
+height: 700px;
+background: rgb(246, 250, 253);;
+margin-left: 900px;
+display: flex;
+justify-content: center;
+flex-direction: column;
+border: 1px solid blue;
+}
+
+.contact_form {
+  border: 1px solid black;
+  margin-top: -100px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.contact_form_title {
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.contact_form_p {
+
+}
+
+.contact_mailto {
+  border: 1px solid red;
+  margin-top: 40px;
+}
+
+.contact_mailto_form {
+
+} 
+
+.contact_mailto_title {
+  
+} 
+
+
+.contact_mailto_span {
+  
+}
+
+
+.contact_mailto_input {
+  
+}
+
+
+.contact_mailto_textarea {
+  
+}
+
+
+.contact_mailto_button {
+  margin-bottom: 10px;
+  margin-top: 10px;
+} 
+
+
+main {
+height: 700px;
+width: 900px;
+margin-top: -700px;
+overflow-y: auto;
+}
+
+
+main::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgb(246, 250, 253);
+	background-color: #F5F5F5;
+}
+
+main::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+main::-webkit-scrollbar-thumb
+{
+	background-color: rgb(58, 61, 62);
+	border: 2px solid #555555;
 }
