@@ -3,6 +3,7 @@ import { cart$ } from '../Storage/Store.js'
 import { updateCart } from '../Storage/Store.js'
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 import "./Confirmation.css";
+import API from "../Storage/Api.js"
 const axios = require('axios');
 
 
@@ -54,7 +55,7 @@ function Confirmation(props) {
                 product_list: cart$._value
             }
 
-            let url = "https://cockpit-0fd022.devspace.host/api/collections/save/order?=b66a6aa37d732772938ec3de8e0b7f"
+            let url = API.ROOT_URL + API.SAVE_ORDER + API.TOKEN;
             axios.post(url, { data: orderObj })
                 .then((response) => {
                     console.log(response)

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 import './Home.css';
+import API from "../Storage/Api.js";
 const axios = require('axios');
 
 
@@ -22,7 +23,7 @@ const Home = (props) => {
         props.updateRedirect(false);
         props.updateHide("hide");
         let pagination = "&limit=" + limit + "&skip=" + skip;
-        let url = "https://cockpit-0fd022.devspace.host/api/collections/get/products?=b66a6aa37d732772938ec3de8e0b7f" + pagination;
+        let url = API.ROOT_URL + API.GET_PRODUCTS + API.TOKEN + pagination;
         if (stock) {
             url += "&filter[stock]=true"
         }

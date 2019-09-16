@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Product.css';
 import { cart$ } from '../Storage/Store.js'
 import { updateCart } from '../Storage/Store.js'
+import API from "../Storage/Api";
 const axios = require('axios');
 
 
@@ -19,7 +20,7 @@ const Product = (props) => {
     useEffect(() => {
 
         const id = props.match.params.id;
-        let url = "https://cockpit-0fd022.devspace.host/api/collections/get/products?=b66a6aa37d732772938ec3de8e0b7f&filter[_id]=" + id;
+        let url = API.ROOT_URL + API.GET_PRODUCTS + API.TOKEN + "&filter[_id]=" + id;
         axios.post(url)
             .then(function (response) {
                 updateData(response.data.entries);
@@ -30,7 +31,7 @@ const Product = (props) => {
 
     useEffect(() => {
         const id = props.match.params.id;
-        let url = "https://cockpit-0fd022.devspace.host/api/collections/get/review?=b66a6aa37d732772938ec3de8e0b7f&filter[id]=" + id;
+        let url = API.ROOT_URL + API.GET_REVIEWS + API.TOKEN + "&filter[id]=" + id;
         axios.post(url)
             .then(function (response) {
                 updateReview(response.data.entries);
@@ -125,7 +126,7 @@ const Product = (props) => {
                 }
             }
             const id = props.match.params.id;
-            let url = "https://cockpit-0fd022.devspace.host/api/collections/save/review?=b66a6aa37d732772938ec3de8e0b7f";
+            let url = API.ROOT_URL + API.SAVE_REVIEW + API.TOKEN;
             axios.post(url, { data: reviewObj })
                 .then((response) => {
                     console.log(response)
