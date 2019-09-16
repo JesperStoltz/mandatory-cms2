@@ -1,9 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
-import Product from './Product.js'
-import Shoppingcart from './Shoppingcart.js'
-import Confirmation from './Confirmation.js'
-import App from '../App.js'
 import './Home.css';
 const axios = require('axios');
 
@@ -23,6 +19,8 @@ const Home = (props) => {
 
     //===============USEEFFECTS============================
     useEffect(() => {
+        props.updateRedirect(false);
+        props.updateHide("hide");
         let pagination = "&limit=" + limit + "&skip=" + skip;
         let url = "https://cockpit-0fd022.devspace.host/api/collections/get/products?=b66a6aa37d732772938ec3de8e0b7f" + pagination;
         if (stock) {
@@ -30,10 +28,9 @@ const Home = (props) => {
         }
         if (search !== "") {
             url += "&filter[name][$regex]=" + search
-            updateLimit(5000);
         }
-        else if (search === ""){
-            updateLimit(findLimit);
+        else if (search === "" || search.length === 1) {
+            updateLimit(parseInt(findLimit));
         }
 
         axios.post(url)
@@ -100,15 +97,16 @@ const Home = (props) => {
     let productpost = data.map(x => {
         return (
             <>
-                <div id={x._id} className="productpost_container">
-                    <Link className="link" to={{ pathname: "/product/" + x._id, state: x._id }}><img className="productpost_container_image" src={"https://cockpit-0fd022.devspace.host/" + x.gallery[0].path} /></Link>
-                    <div className="productpost_container_name" id={x._id}><Link className="link" to={{ pathname: "/product/" + x._id, state: x.name }}>{x.name}</Link></div>
-                    <div className="productpost_container_description">{x.description}</div>
-                    <p className="productpost_container_pricetitle">Price:</p>
-                    <div className="productpost_container_price">{x.price}</div>
-                    <p className="productpost_container_stocktitle">Stock:</p>
-                    <div className="productpost_container_stock">{x.stock}</div>
-                </div>
+                <Link className="link" to={{ pathname: "/product/" + x._id, state: x._id }}>
+                    <div id={x._id} className="productpost_container">
+                        <img className="productpost_container_image" src={"https://cockpit-0fd022.devspace.host/" + x.gallery[0].path} />
+                        <div className="card_text">
+                            <p className="productpost_container_name">{x.name}</p>
+                            <p className="productpost_container_price">Price: {x.price}</p>
+                            <p className="productpost_container_stock">Stock: {x.stock}</p>
+                        </div>
+                    </div>
+                </Link>
             </>
         )
     }
@@ -118,18 +116,25 @@ const Home = (props) => {
     return (
         <div className="Home">
             <div className="Home_header">
-                <p className="Home_header_p">Which products do you wish to see?</p>
-                <span className="Home_header_span">All items</span>
-                <input type="radio" name="stock" onClick={allStock} />
-                <span className="Home_header_span">Only in Stock</span>
-                <input type="radio" name="stock" onClick={inStock} />
+                <div className="stock_container">
+                    <p className="Home_header_p">Which products do you wish to see?</p>
+                    <div className="stock_button_container">
+                        <span className="Home_header_span">All items</span>
+                        <input type="radio" name="stock" onChange={allStock} checked={!stock} />
+                        <span className="Home_header_span">Only in Stock</span>
+                        <input type="radio" name="stock" onChange={inStock} />
+                    </div>
+                </div>
+                <div className="search_container">
+                    <p className="Home_search_p">Or search for what you're interested in!</p>
+                    <input className="Home_search" onChange={onSearch} />
+                </div>
             </div>
-            <div className="Home_searchfield">
-                <p className="Home_search_p">Or search for what you're interested in!</p>
-                <input className="Home_search" onChange={onSearch}/>
-            </div>
+
             <div className="Home_products">
-                {productpost}
+                <div className="products">
+                    {productpost}
+                </div>
                 <div className="button_container">
                     <button disabled={disPrev} onClick={goBack}>Back</button>
                     <div className="select_container">

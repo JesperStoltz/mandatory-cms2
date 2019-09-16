@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css?family=Saira+Stencil+One&display=swap');
+
+
+.Shoppingcart {
+    width: 90%;
+    display: flex;
+    align-items: center;
+}
+
+.shoppingcart_table {
+    width: 80%;
+    color: black;
+    background: rgba(0, 0, 0, 0.503);
+    margin-top: 5%;
+    font-family: 'Saira Stencil One', cursive;
+    text-align: center;
+
+}
+
+.shoppingcart_table  thead {
+    color: yellow;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-size: 22px;
+
+}
+
+.shoppingcart_table  tr {
+
+}
+
+.shoppingcart_table  th {
+    border-bottom: 1px solid yellow;
+}
+
+.shoppingcart_table  td {
+    border-bottom: 1px solid yellow;
+    color: yellow;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-size: 22px;
+}
+
+.toConfirmation_container {
+    margin-top: 10px;
+    color: yellow;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-size: 30px;
+}
+
+.toConfirmation_button:visited {
+    color: yellow;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-size: 30px;
+}
+
+.toConfirmation_button {
+    color: yellow;
+    font-family: 'Saira Stencil One', cursive;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-size: 28px;
+    background: none;
+    border: none;
+    text-decoration: none;
+}
+
+.toConfirmation_button:hover {
+    cursor: pointer;
+    color: black;
+    text-shadow: -1px 0 yellow, 0 1px yellow, 1px 0 yellow, 0 -1px yellow;
+}

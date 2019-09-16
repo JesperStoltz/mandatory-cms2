@@ -1,0 +1,48 @@
+.Confirmation {
+    width: 100%;
+    height: 90%;
+    margin-top: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.503);
+}
+
+.confirmation_p {
+    color: yellow;
+    font-size: 40px;
+    font-family: 'Saira Stencil One', cursive;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.confirmation_input {
+    width: 300px;
+}
+
+.confirmation_span {
+    color: yellow;
+    font-size: 40px;
+    font-family: 'Saira Stencil One', cursive;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.confirmation_button {
+  margin-top: 10%;
+}
+
+.confirmation_thankyou_p {
+    color: yellow;
+    font-size: 40px;
+    font-family: 'Saira Stencil One', cursive;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

@@ -1,52 +1,68 @@
-import React, { useState, useEffect, useRef } from 'react';
-import Product from './Product.js'
-import Home from './Home.js'
-import Confirmation from './Confirmation.js'
-import App from '../App.js'
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
+import { cart$ } from '../Storage/Store.js'
+import { updateCart } from '../Storage/Store.js'
+import './Shoppingcart.css';
 
 
 const Shoppingcart = (props) => {
+    const [ping, updatePing] = useState(true)
 
-    let cart = props.cart;
+    let cart = cart$._value;
     let total = 0;
     for (let i = 0; i < cart.length; i++) {
-        let amount = parseInt(cart[i].amount).toFixed(2);
-        let price = parseInt(cart[i].price).toFixed(2);
+        let amount = parseInt(cart[i].value.amount).toFixed(2); 
+        let price = parseInt(cart[i].value.price).toFixed(2); //Får inte rätt på decimalerna?
         let combine = amount * price;
         total = total + combine;
     }
 
-    console.log(total);
+    const onDelete = (e) => {
+        
+        let id = e.target.id;
+
+        for (let i=0; i<cart.length; i++){
+            if (cart[i].value.id === id){
+                let newArr = cart.slice(1);
+                updateCart(newArr);
+            }
+        }
+        if (ping === true){
+            updatePing(false);
+        }
+        else {
+            updatePing(true);
+        }
+    }
 
     let shoppingcart = props.cart.map(x => {
         return (
             <>
                 <tr>
-                    <td>{x.name}</td><td>{x.amount}</td><td>{x.price}</td><td><button>X</button></td>
+                    <td>{x.value.name}</td><td>{x.value.amount}</td><td>{x.value.price}</td><td><button id={x.value.id} onClick={onDelete}>Remove from Cart</button></td>
                 </tr>
             </>
         )
     })
 
-    const onClick = (e) => {
-        console.log(props.cart);
-        console.log(localStorage);
-    }
 
     return (
         <div className="Shoppingcart">
-            <table>
+            <table className="shoppingcart_table">
                 <thead>
-                    <th>Product</th><th>Amount</th><th>Price</th>
+                    <tr><th>Product</th><th>Amount</th><th>Price</th><th></th></tr>
                 </thead>
                 <tbody>
                     {shoppingcart}
                 </tbody>
-                <tfooter>
-                    <td></td><td></td><td>Total: {total}</td>
-                </tfooter>
+                <tfoot>
+                    <tr><td></td><td></td><td>Total: {total}</td><td></td></tr>
+                </tfoot>
             </table>
-            <button onClick={onClick}>Log</button>
+
+            <div className="toConfirmation_container">
+                <Link className="toConfirmation_button" to="/confirmation">Continue to checkout to complete your order</Link>
+            </div>
         </div>
     );
 }

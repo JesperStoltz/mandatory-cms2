@@ -1,17 +1,17 @@
 import { BehaviorSubject } from 'rxjs';
 
-export const token$ = new BehaviorSubject(window.localStorage.getItem('token') || []);
+export const cart$ = new BehaviorSubject(JSON.parse(window.localStorage.getItem('cart') || "[]"));
 
 
-export function updateToken(newToken) {
+export function updateCart(newCart) {
 
-  if(!newToken){
-    window.localStorage.removeItem('token');
+  if(!newCart){
+    window.localStorage.removeItem('cart');
   }
   else{
-    window.localStorage.setItem('token', newToken);
+    window.localStorage.setItem('cart', JSON.stringify(newCart));
   }
 
- token$.next(newToken);
+ cart$.next(newCart);
  //console.log(token$.value)
 }

@@ -1,3 +1,150 @@
-img {
-    height: 30px;
+@import url('https://fonts.googleapis.com/css?family=Saira+Stencil+One&display=swap');
+
+
+.Product {
+    display: flex; 
+    align-items: center;
+    flex-direction: column;
+
 }
+.gallery {
+    width: 95%;
+    border: 1px solid yellow;
+    margin-top: 2.5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background: rgba(255, 255, 255, 0.898);
+}
+
+.product_image_container {
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.741);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+}
+
+.product_image {
+    height: 200px;
+}
+
+.product_container {
+    width: 100%;
+    margin-top: 2.5%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.503);
+}
+
+.product_container_name{
+    color: white;
+    font-size: 40px;
+    font-family: 'Saira Stencil One', cursive;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+}
+
+.product_container_description{
+    color: white;
+    font-size: 40px;
+    font-family: 'Saira Stencil One', cursive;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+}
+
+.product_container_price {
+    color: white;
+    font-size: 40px;
+    font-family: 'Saira Stencil One', cursive;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.productpost_container_stock{
+    color: white;
+    font-size: 40px;
+    font-family: 'Saira Stencil One', cursive;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.add_item { 
+    display: flex;
+    align-items: center;
+}
+
+.add_amount {
+    width: 60px;
+    height: 20px;
+}
+
+.review_container {
+    width: 100%;
+    margin-top: 2.5%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.503);
+    color: black;
+    font-size: 20px;
+    font-family: 'Saira Stencil One', cursive;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+
+.review_p {
+    font-size: 40px;
+    margin-top: 0px;
+    margin-left: 10px;
+    text-decoration: underline;
+}
+
+.review_post_container {
+    margin-top: 10px;
+    border-bottom: 1px solid black;
+    width: 90%;
+    margin-left: 5px;
+}
+
+.send_review_container {
+    width: 100%;
+    margin-top: 2.5%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.503);
+    color: black;
+    font-size: 20px;
+    font-family: 'Saira Stencil One', cursive;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+
+.send_review_title {
+
+}
+
+.send_review_span {
+
+}
+
+.send_review_input { 
+
+}
+
+.send_review_textarea {
+    width: 300px;
+    height: 100px;
+}
+
+.send_review_ratingnum {
+    margin-left: 60px;
+    margin-bottom: -10px;
+}
+
+.review_rating {
+
+}
+
