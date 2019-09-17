@@ -12,7 +12,8 @@ height: 100%;
 display: flex;
 flex-direction: column;
 background-image: url("./Images/cam.png");
-background-repeat: repeat;
+background-repeat:no-repeat;
+background-size:100% 100%;
 }
 
 header {
@@ -152,7 +153,8 @@ main {
 height: 100%;
 width: 100%;
 overflow-y: auto;
-background-image: url("./Images/cam.png");
+background-image: url("./Images/newbackground.jpg");
+background-size: 100% 100%s;
 }
 
 

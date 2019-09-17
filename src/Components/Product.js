@@ -134,6 +134,7 @@ const Product = (props) => {
 
                 updateReviewName("");
                 updateReviewComment("");
+                updateErrorMessage("");
 
             if (props.ping === true) {
                 props.updatePing(false);
