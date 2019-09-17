@@ -67,3 +67,9 @@
     color: black;
     text-shadow: -1px 0 yellow, 0 1px yellow, 1px 0 yellow, 0 -1px yellow;
 }
+
+.errorMessage {
+    font-size: 36px;
+    font-weight: bold;
+    text-shadow: -1px 0 yellow, 0 1px yellow, 1px 0 yellow, 0 -1px yellow;
+}

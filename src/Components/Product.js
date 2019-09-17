@@ -15,6 +15,7 @@ const Product = (props) => {
     const [reviewName, updateReviewName] = useState("");
     const [reviewComment, updateReviewComment] = useState("");
     const [reviewRating, updateReviewRating] = useState(5);
+    const [errorMessage, updateErrorMessage] = useState("");
 
     //===============USEEFFECTS============================
     useEffect(() => {
@@ -25,7 +26,6 @@ const Product = (props) => {
             .then(function (response) {
                 updateData(response.data.entries);
                 updateGallery(response.data.entries[0].gallery);
-
             });
     }, [props.ping]);
 
@@ -40,15 +40,15 @@ const Product = (props) => {
 
 
     //=========FUNCTIONS===================
-    const addToCart = (name, price, id) => {
+    const addToCart = () => {
         let cart = cart$._value;
 
         let prodObj = {
             value: {
-                name: name,
-                price: parseInt(price),
+                name: data[0].name,
+                price: parseInt(data[0].price),
                 amount: amount,
-                id: id
+                id: data[0]._id
             }
         }
 
@@ -142,6 +142,9 @@ const Product = (props) => {
                 props.updatePing(true);
             }
         }
+        else if (reviewName === "" || reviewComment === "") {
+            updateErrorMessage("All fields must be filled in for us to accept your review");
+        }
     }
 
     //======RENDERING FUNCTIONS===============
@@ -175,8 +178,8 @@ const Product = (props) => {
                     <p className="product_container_price">Price: {x.price}</p>
                     <p className="productpost_container_stock">Stock: {x.stock}</p>
                     <div className="add_item">
-                    <input className="add_amount" id={x._id} type="number" min="1" onChange={onChange}/>
-                    <button className="productpost_container_add" onClick={(e) => addToCart(x.name, x.price, x._id)}>Add</button>
+                    <input className="add_amount" id={x._id} type="number" min="1" value={amount} onChange={onChange}/>
+                    <button className="productpost_container_add" onClick={addToCart}>Add</button>
                     </div>
                 </div>
             </>
@@ -208,6 +211,7 @@ const Product = (props) => {
                     <span className="send_review_span">Your rating:</span>
                     <p className="send_review_ratingnum">{reviewRating}</p>
                     <input className="review_rating" type="range" min="1" max="5" step="1" className="send_review_rating" onChange={setReviewRating} /><br/>
+                    <p className="errorMessage">{errorMessage}</p>
                     <button className="send_review_button">Send</button>
                 </form>
             </div>

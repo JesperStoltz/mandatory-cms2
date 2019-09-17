@@ -11,6 +11,7 @@ function Confirmation(props) {
     const [name, updateName] = useState("");
     const [adress, updateAdress] = useState("");
     const [newRedirect, updateNewRedirect] = useState(false);
+    const [errorMessage, updateErrorMessage] = useState("");
     
 
     useEffect(() => {
@@ -60,13 +61,15 @@ function Confirmation(props) {
                 .then((response) => {
                     console.log(response)
                 })
-
+            updateErrorMessage("");
             updateCart([]);
             updateName("");
             updateAdress("");
             props.updateHide("show")
-            props.updateRedirect(true);
-            
+            props.updateRedirect(true);          
+        }
+        else if (name === "" || adress === "") {
+            updateErrorMessage("You need to fill in every field for us to handle your order");
         }
 
     }
@@ -79,12 +82,14 @@ function Confirmation(props) {
             <input onChange={setName} className="confirmation_input" value={name} />
             <span className="confirmation_span">Adress:</span>
             <input onChange={setAdress} className="confirmation_input" value={adress} />
+            
             <button onClick={Confirm} className="confirmation_button">Agree and confirm</button>
 
             <div className={props.hide}>
                 <p className="confirmation_thankyou_p">Thank you for your order!</p>
                 <p className="confirmation_thankyou_p">You will be returned to the frontpage in a few moments!</p>
             </div>
+            <p className="errorMessage">{errorMessage}</p>
         </div>
     );
 }
